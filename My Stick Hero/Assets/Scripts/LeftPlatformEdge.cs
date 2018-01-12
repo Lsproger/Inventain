@@ -8,7 +8,7 @@ public class LeftPlatformEdge : MonoBehaviour {
     {
         CameraController.isNeedToMove = false;
         Debug.Log("BECOME INVISIBLE");
-        Destroy(transform.parent);
+        
     }
 
     void OnBecameVisible()

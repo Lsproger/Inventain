@@ -8,6 +8,11 @@ public class RightPlatformEdge : MonoBehaviour
     private Transform platform;
 
 
+    void OnBecameInvisible()
+    {
+        Destroy(transform.parent.gameObject);
+    }
+
     void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.tag == "Player")
@@ -39,6 +44,11 @@ public class RightPlatformEdge : MonoBehaviour
                 transform.position.z
                 );
             next.Find("Square").localScale = new Vector3(DEFAULT_RED_SQUARE_SCALE / nextScale, 0.08f, 1f);
+
+            if (GameState.state == GameState.States.Game)
+            {
+                InputAggregator.Game_OnPlatformEdgeReachedEvent();
+            }
         }
     }
 }

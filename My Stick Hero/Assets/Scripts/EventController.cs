@@ -19,5 +19,7 @@ public class EventController : MonoBehaviour {
         InputAggregator.OnPlayClickEvent += cam.MoveNextPosition;
         InputAggregator.OnCreateStickEvent += game.CreateStick;
         InputAggregator.OnStopCreateStickEvent += game.StopCreateStick;
+        InputAggregator.OnStopRotateStickEvent += ch.StartMove;
+        InputAggregator.OnPlatfotmEdgeReachedEvent += cam.MoveNextPosition;
     }
 }
