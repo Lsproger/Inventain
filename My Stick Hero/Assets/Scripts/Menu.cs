@@ -7,8 +7,8 @@ public class Menu : MonoBehaviour
 {
 
     internal bool isSoundOn = true;
-    internal bool isPlayButtonClicked = false;
     internal Image soundImage;
+    internal bool isNeedToHideUI = false;
 
 
     [SerializeField]
@@ -32,25 +32,29 @@ public class Menu : MonoBehaviour
     }
 
 
-    void FixedUpdate()
+    void Update()
     {
-
         if (character.GetComponent<Animator>().GetBool("isWalking"))
         {
             Debug.Log("WALKING");
             Vector3 currCharPos = character.transform.position;
-            character.transform.position = new Vector3((currCharPos.x + 0.1f) * Time.deltaTime, currCharPos.y, currCharPos.z);
-            Camera.main.transform.Translate(new Vector3(0.1f, 0, 0) * Time.deltaTime);
+            character.transform.position = new Vector3(currCharPos.x + (10f * Time.deltaTime), currCharPos.y, currCharPos.z);
+            Camera.main.transform.Translate(new Vector3(30f, 0, 0) * Time.deltaTime);
         }
 
+        if (isNeedToHideUI && !character.GetComponent<Animator>().GetBool("isWalking"))
+        {
+            canvas.transform.Find("Menu").gameObject.SetActive(false);
+            canvas.transform.Find("Game").gameObject.SetActive(true);
+        }
     }
+
+    
 
     private void PlayButton_OnCLick()
     {
-        canvas.transform.Find("Menu").gameObject.SetActive(false);
-        canvas.transform.Find("Game").gameObject.SetActive(true);
         character.GetComponent<Animator>().SetBool("isWalking", true);
-        Debug.Log(character.GetComponent<Animator>().GetBool("isWalking"));
+        isNeedToHideUI = true;
     }
 
 
