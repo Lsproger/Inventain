@@ -51,9 +51,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Character.cs" />
      <Compile Include="Assets\Scripts\DieAreaEnter.cs" />
+     <Compile Include="Assets\Scripts\EventController.cs" />
+     <Compile Include="Assets\Scripts\Game.cs" />
+     <Compile Include="Assets\Scripts\GameState.cs" />
+     <Compile Include="Assets\Scripts\InputAggregator.cs" />
+     <Compile Include="Assets\Scripts\LeftPlatformEdge.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
-     <Compile Include="Assets\Scripts\PlatformEdge.cs" />
+     <Compile Include="Assets\Scripts\RightPlatformEdge.cs" />
      <Compile Include="Assets\Scripts\Stick.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

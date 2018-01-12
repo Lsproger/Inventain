@@ -17,8 +17,6 @@ public class Menu : MonoBehaviour
     private Sprite sndOffImg;
     [SerializeField]
     private Canvas canvas;
-    [SerializeField]
-    private GameObject character;
 
 
     void Start()
@@ -29,32 +27,16 @@ public class Menu : MonoBehaviour
             AddListener(delegate () { SoundButton_OnClick(); });
         soundImage = transform.Find("Sound").GetComponent<Image>();
         soundImage.sprite = sndOnImg;
+        GameState.SetGameState(GameState.States.Menu);
     }
 
-
-    void Update()
-    {
-        if (character.GetComponent<Animator>().GetBool("isWalking"))
-        {
-            Debug.Log("WALKING");
-            Vector3 currCharPos = character.transform.position;
-            character.transform.position = new Vector3(currCharPos.x + (10f * Time.deltaTime), currCharPos.y, currCharPos.z);
-            Camera.main.transform.Translate(new Vector3(30f, 0, 0) * Time.deltaTime);
-        }
-
-        if (isNeedToHideUI && !character.GetComponent<Animator>().GetBool("isWalking"))
-        {
-            canvas.transform.Find("Menu").gameObject.SetActive(false);
-            canvas.transform.Find("Game").gameObject.SetActive(true);
-        }
-    }
-
-    
 
     private void PlayButton_OnCLick()
     {
-        character.GetComponent<Animator>().SetBool("isWalking", true);
-        isNeedToHideUI = true;
+        InputAggregator.OnPlayClikEventHandler();
+        canvas.transform.Find("Menu").gameObject.SetActive(false);
+        canvas.transform.Find("Game").gameObject.SetActive(true);
+        GameState.SetGameState(GameState.States.Game);
     }
 
 
