@@ -56,11 +56,11 @@ public class Game : MonoBehaviour {
     {
         Debug.Log("I'M CREATING;");
         isNeedToCreateStick = true;
-        stick = GameObject.FindGameObjectWithTag("Platform").transform.
-               Find("Stick").gameObject;
+        stick = GameObject.FindGameObjectWithTag("Platform").transform.Find("Stick").gameObject;
+        Debug.Log("STICKMMMMMM" + stick.name);
         //Color stickColor = stick.GetComponent<Renderer>().material.color;
         //stickColor.a = 1;
-        stick.GetComponent<Renderer>().material.color = new Color(0,0,0,1);
+        stick.GetComponent<Renderer>().material.color = new Color(1,1,1,1);
     }
 
 
