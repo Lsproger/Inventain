@@ -6,11 +6,15 @@ internal class InputAggregator : MonoBehaviour {
     internal static event EventController.MethodContainer OnCreateStickEvent;
     internal static event EventController.MethodContainer OnStopCreateStickEvent;
     internal static event EventController.MethodContainer OnStopRotateStickEvent;
-    internal static event EventController.MethodContainer OnPlatfotmEdgeReachedEvent;
+    internal static event EventController.MethodContainer OnPlatformEdgeReachedEvent;
+    internal static event EventController.MethodContainer OnGameOverEvent;
 
-    internal static void OnPlayClikEventHandler ()
+
+
+    internal static void OnPlayCliсkEventHandler ()
     {
         OnPlayClickEvent();
+        
 	}
 
     internal static void Game_OnCreateStickEvent()
@@ -30,6 +34,13 @@ internal class InputAggregator : MonoBehaviour {
 
     internal static void Game_OnPlatformEdgeReachedEvent()
     {
-        OnPlatfotmEdgeReachedEvent();
+        OnPlatformEdgeReachedEvent();
     }
+
+    internal static void OnGameOverEventHandler()
+    {
+        OnGameOverEvent();
+    }
+
+
 }

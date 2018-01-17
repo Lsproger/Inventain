@@ -26,4 +26,7 @@ public class Stick : MonoBehaviour {
         isNeedToCreateStick = false;
         isNeedToRotateStick = true;
     }
+
+    
+
 }

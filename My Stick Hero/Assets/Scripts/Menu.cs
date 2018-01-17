@@ -27,16 +27,13 @@ public class Menu : MonoBehaviour
             AddListener(delegate () { SoundButton_OnClick(); });
         soundImage = transform.Find("Sound").GetComponent<Image>();
         soundImage.sprite = sndOnImg;
-        GameState.SetGameState(GameState.States.Menu);
     }
 
 
     private void PlayButton_OnCLick()
     {
-        InputAggregator.OnPlayClikEventHandler();
-        canvas.transform.Find("Menu").gameObject.SetActive(false);
-        canvas.transform.Find("Game").gameObject.SetActive(true);
-        GameState.SetGameState(GameState.States.Game);
+        InputAggregator.OnPlayCliсkEventHandler();
+        GameStateManager.instance.State = GameStateManager.GameState.Game;
     }
 
 

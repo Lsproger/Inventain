@@ -8,7 +8,9 @@ public class DieAreaEnter : MonoBehaviour {
     {
         if(obj.tag == "Player")
         {
-            GameState.SetGameState(GameState.States.DeathMenu);
+            Debug.Log("Death");
+            GameStateManager.instance.State = GameStateManager.GameState.GameOverMenu;
+            InputAggregator.OnGameOverEventHandler();
         }
     }
 }
