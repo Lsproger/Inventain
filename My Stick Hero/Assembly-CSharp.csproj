@@ -61,9 +61,11 @@
      <Compile Include="Assets\Scripts\InputAggregator.cs" />
      <Compile Include="Assets\Scripts\LeftPlatformEdge.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
+     <Compile Include="Assets\Scripts\RedSquare.cs" />
      <Compile Include="Assets\Scripts\RightPlatformEdge.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
      <Compile Include="Assets\Scripts\Stick.cs" />
+     <Compile Include="Assets\Scripts\StickHead.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

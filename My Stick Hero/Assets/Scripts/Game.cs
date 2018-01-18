@@ -6,9 +6,12 @@ public class Game : MonoBehaviour
 {
 
     internal GameObject stick;
+    internal GameObject stickHead;
     internal bool isNeedToCreateStick = false;
     internal bool isNeedToRotateStick = false;
     internal float rotationSpeed = 3;
+
+    internal const float DEAFAULT_STICK_HEAD_SCALE = 0.2f;
 
 
     void OnEnable()
@@ -46,6 +49,12 @@ public class Game : MonoBehaviour
                 stick.transform.localScale.y + 1f,
                 stick.transform.localScale.z
                 );
+            stickHead.transform.localScale = new Vector3
+                (
+                stickHead.transform.localScale.x,
+                DEAFAULT_STICK_HEAD_SCALE / stick.transform.localScale.y,
+                stickHead.transform.localScale.z
+                );
         }
 
         if (isNeedToRotateStick)
@@ -68,7 +77,9 @@ public class Game : MonoBehaviour
     {
         isNeedToCreateStick = true;
         stick = GameObject.FindGameObjectWithTag("Platform").transform.Find("Stick").gameObject;
+        stickHead = stick.transform.Find("StickHead").gameObject;
         stick.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+        stickHead.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
 

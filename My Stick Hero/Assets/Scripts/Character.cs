@@ -30,6 +30,7 @@ public class Character : MonoBehaviour {
     {
         Vector3 currCharPos = transform.position;
         transform.position = new Vector3((currCharPos.x + 0.1f), currCharPos.y, currCharPos.z);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void StartMove()
