@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour {
 
-    internal float score = -1;
+    internal static float score = -1;
     Text scoreTextView;
     internal string textTemplate;
 
@@ -30,5 +30,10 @@ public class Score : MonoBehaviour {
     {
         score += 1;
         scoreTextView.text = string.Format(textTemplate, score.ToString());
+    }
+
+    internal static void ResetScore()
+    {
+        score = -1;
     }
 }

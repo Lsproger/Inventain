@@ -64,6 +64,7 @@
      <Compile Include="Assets\Scripts\RedSquare.cs" />
      <Compile Include="Assets\Scripts\RightPlatformEdge.cs" />
      <Compile Include="Assets\Scripts\Score.cs" />
+     <Compile Include="Assets\Scripts\ScoreTable.cs" />
      <Compile Include="Assets\Scripts\Stick.cs" />
      <Compile Include="Assets\Scripts\StickHead.cs" />
  <Reference Include="UnityEngine.UI">

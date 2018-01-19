@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 492}
   m_MaxSize: {x: 16012, y: 14042}
   vertical: 0
-  controlID: 46
+  controlID: 134
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -390,9 +390,9 @@ MonoBehaviour:
     height: 383
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8c6ffeff
-    m_LastClickedID: -102516
-    m_ExpandedIDs: 3c08ffffa4fbffffa6fbffff000000005a28000066280000a02800001c290000
+    m_SelectedIDs: f8280000
+    m_LastClickedID: 10488
+    m_ExpandedIDs: 1c2bf3ff442bf3ff0239f3ff6e3ef3ff1688f3ff3e88f3ffaa95f3ffb40afeffa4fbffffa6fbffff000000005a28000066280000a0280000f8280000142900001c290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -447,9 +447,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.6127925, y: -5.4557595, z: 0.003471203}
+    m_Target: {x: 18.076817, y: -12.450724, z: 0.10864258}
     speed: 2
-    m_Value: {x: 5.6127925, y: -5.4557595, z: 0.003471203}
+    m_Value: {x: 18.076817, y: -12.450724, z: 0.10864258}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -476,9 +476,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 0.6052269
+    m_Target: 0.93321574
     speed: 2
-    m_Value: 0.6052269
+    m_Value: 0.93321574
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -554,18 +554,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Prefabs
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Prefabs
+  - Assets/Scripts
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Inventain\My Stick Hero
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e0270000
-    m_LastClickedID: 10208
+    m_SelectedIDs: 48270000
+    m_LastClickedID: 10056
     m_ExpandedIDs: 0000000042270000c62700001628000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -701,7 +701,7 @@ MonoBehaviour:
     y: 92
     width: 278
     height: 654
-  m_ScrollPosition: {x: 0, y: 0}
+  m_ScrollPosition: {x: 0, y: 71.99219}
   m_InspectorMode: 0
   m_PreviewResizer:
     m_CachedPref: 225
