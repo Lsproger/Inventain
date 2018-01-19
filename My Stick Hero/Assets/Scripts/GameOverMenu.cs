@@ -38,6 +38,7 @@ public class GameOverMenu : MonoBehaviour {
             Quaternion.Euler(0, 0, 0));
 
         newPlatform.transform.Find("RedSquare").GetComponent<SpriteRenderer>().enabled = false;
+        newPlatform.transform.Find("RightPlatformEdge").GetComponent<BoxCollider2D>().enabled = true;
         
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(
             NEW_CHARACTER_POSITION_X,

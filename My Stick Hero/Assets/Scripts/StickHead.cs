@@ -12,7 +12,9 @@ public class StickHead : MonoBehaviour {
         }
         else if (obj.tag == "Platform")
         {
-
+            obj.gameObject.transform.Find("RightPlatformEdge").
+                GetComponent<BoxCollider2D>().enabled = true;
+            obj.gameObject.GetComponent<AudioSource>().Play();
         }
     }
 }

@@ -6,10 +6,12 @@ public class RightPlatformEdge : MonoBehaviour
     internal const float DEFAULT_SCALE = 1;
     internal const float PLATFORM_WIDTH = 5;
     internal const float MIN_PLATFORM_SCALE = 0.2f;
-    internal const float MAX_PLATFORM_SCALE = 1.5f;
+    internal const float MAX_PLATFORM_SCALE = 1f;
     [SerializeField]
     private Transform platform;
 
+
+   
 
     void OnBecameInvisible()
     {
@@ -21,15 +23,19 @@ public class RightPlatformEdge : MonoBehaviour
     {
         if (obj.tag == "Player")
         {
-            Debug.Log("PLATFORM EDGE REACHED");
-            obj.GetComponentInParent<Animator>().SetBool("isWalking", false);
-
+            if (GameStateManager.instance.State == GameStateManager.GameState.Game)
+            {
+                InputAggregator.Game_OnPlatformEdgeReachedEvent();
+                InputAggregator.OnIncreaseScoreEventHandler();
+            }
+            
             Transform nextPlatform = Instantiate(platform);
             nextPlatform.transform.Find("RedSquare").GetComponent<SpriteRenderer>().enabled = true;
+            nextPlatform.transform.Find("RightPlatformEdge").GetComponent<BoxCollider2D>().enabled = false;
             float nextScale = Random.Range(MIN_PLATFORM_SCALE, MAX_PLATFORM_SCALE);
             float distance = Random.Range(1, 5);
-            Debug.Log("Next scale" + nextScale);
-            Debug.Log("Distance " + distance);
+            
+              
             nextPlatform.transform.localScale = new Vector3
                 (
                 nextScale,
@@ -43,9 +49,9 @@ public class RightPlatformEdge : MonoBehaviour
                 transform.parent.transform.position.x +
                 distance;
 
-            Debug.Log("NeXt width" + nextPlatform.transform.localScale.y);
-            Debug.Log("prev pos" + transform.parent.transform.position.x);
-            Debug.Log("distance" + distance);
+            
+            
+                                         
 
             nextPlatform.transform.position = new Vector3
                 (nextPositionX,
@@ -56,11 +62,7 @@ public class RightPlatformEdge : MonoBehaviour
             nextPlatform.Find("Stick").localScale = new Vector3(DEFAULT_SCALE / nextScale, DEFAULT_SCALE, 1f);
             nextPlatform.Find("RedSquare").localScale = new Vector3(DEFAULT_SCALE / nextScale, DEFAULT_SCALE, 1f);
 
-            if (GameStateManager.instance.State == GameStateManager.GameState.Game)
-            {
-                InputAggregator.Game_OnPlatformEdgeReachedEvent();
-                InputAggregator.OnIncreaseScoreEventHandler();
-            }
+            
 
 
         }

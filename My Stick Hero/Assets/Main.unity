@@ -632,15 +632,64 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 212075982158044258, guid: 5ca0adcb917df9b4490d71b8474fd52a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61637829632845864, guid: 5ca0adcb917df9b4490d71b8474fd52a,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114828116467286814, guid: 5ca0adcb917df9b4490d71b8474fd52a,
         type: 2}
       propertyPath: platform
       value: 
       objectReference: {fileID: 4636458421376822, guid: 5ca0adcb917df9b4490d71b8474fd52a,
         type: 2}
-    - target: {fileID: 212075982158044258, guid: 5ca0adcb917df9b4490d71b8474fd52a,
+    - target: {fileID: 50005010516624592, guid: 5ca0adcb917df9b4490d71b8474fd52a,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 61376675017933668, guid: 5ca0adcb917df9b4490d71b8474fd52a,
         type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50005010516624592, guid: 5ca0adcb917df9b4490d71b8474fd52a,
+        type: 2}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541046100124386, guid: 5ca0adcb917df9b4490d71b8474fd52a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 5.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541046100124386, guid: 5ca0adcb917df9b4490d71b8474fd52a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212574470154905352, guid: 5ca0adcb917df9b4490d71b8474fd52a,
+        type: 2}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541046100124386, guid: 5ca0adcb917df9b4490d71b8474fd52a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541046100124386, guid: 5ca0adcb917df9b4490d71b8474fd52a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541046100124386, guid: 5ca0adcb917df9b4490d71b8474fd52a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541046100124386, guid: 5ca0adcb917df9b4490d71b8474fd52a, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -656,6 +705,7 @@ GameObject:
   - component: {fileID: 358605509}
   - component: {fileID: 358605511}
   - component: {fileID: 358605510}
+  - component: {fileID: 358605512}
   m_Layer: 0
   m_Name: DieArea
   m_TagString: Untagged
@@ -695,7 +745,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 358605508}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 0cb77231a430b454fb792ff7ffcc3943, type: 2}
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -712,6 +762,26 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &358605512
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 358605508}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 0cb77231a430b454fb792ff7ffcc3943, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &384898501
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +1046,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78efec7aa5eb544a8795738b8cfe6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &595510175 stripped
+Rigidbody2D:
+  m_PrefabParentObject: {fileID: 50064839697075248, guid: 5ca0adcb917df9b4490d71b8474fd52a,
+    type: 2}
+  m_PrefabInternal: {fileID: 358473238}
 --- !u!1 &725125966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,22 +1186,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &904763364 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1804832183761418, guid: 5ca0adcb917df9b4490d71b8474fd52a,
-    type: 2}
-  m_PrefabInternal: {fileID: 358473238}
---- !u!114 &904763368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 904763364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00001fc24f637d145b605735a95fae27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &973886724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1465,7 @@ GameObject:
   - component: {fileID: 1218438199}
   - component: {fileID: 1218438196}
   - component: {fileID: 1218438200}
+  - component: {fileID: 1218438201}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -1450,7 +1510,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.35, y: 2.12}
+  m_Size: {x: 0.1, y: 2.12}
   m_EdgeRadius: 0
 --- !u!95 &1218438197
 Animator:
@@ -1546,6 +1606,86 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed36a468fb368dc4b80c77030fbbee11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1218438201
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1218438194}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: edadb1a0c90c29e44996cbf8f9734edd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &1221741356
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,6 +2043,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platform: {fileID: 4636458421376822, guid: 5ca0adcb917df9b4490d71b8474fd52a, type: 2}
+--- !u!1 &1629606783 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1684967462492362, guid: 5ca0adcb917df9b4490d71b8474fd52a,
+    type: 2}
+  m_PrefabInternal: {fileID: 358473238}
+--- !u!233 &1629606789
+HingeJoint2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1629606783}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_EnableCollision: 0
+  m_ConnectedRigidBody: {fileID: 595510175}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_AutoConfigureConnectedAnchor: 1
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: -0.099999905, y: 5.1}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359
 --- !u!224 &1772971304
 RectTransform:
   m_ObjectHideFlags: 0

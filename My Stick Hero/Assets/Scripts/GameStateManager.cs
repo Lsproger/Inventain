@@ -40,7 +40,6 @@ public class GameStateManager : MonoBehaviour
             state = value;
             if (GameStateChanged != null)
             {
-                EventArgs eventArgs = new EventArgs { };
                 GameStateChanged(this, new GameStateChangedArgs(state));
             }
         }

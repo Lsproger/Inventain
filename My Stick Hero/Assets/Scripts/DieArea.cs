@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DieAreaEnter : MonoBehaviour {
+public class DieArea : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D obj)
     {
@@ -12,5 +12,12 @@ public class DieAreaEnter : MonoBehaviour {
             GameStateManager.instance.State = GameStateManager.GameState.GameOverMenu;
             InputAggregator.OnGameOverEventHandler();
         }
+    }
+
+    void Update()
+    {
+        transform.position = new Vector3(
+            GameObject.FindGameObjectWithTag("Player").transform.position.x,
+            transform.position.y, transform.position.z);
     }
 }
