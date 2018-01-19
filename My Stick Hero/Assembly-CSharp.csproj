@@ -58,7 +58,6 @@
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\GameOverMenu.cs" />
      <Compile Include="Assets\Scripts\GameStateManager.cs" />
-     <Compile Include="Assets\Scripts\InputAggregator.cs" />
      <Compile Include="Assets\Scripts\LeftPlatformEdge.cs" />
      <Compile Include="Assets\Scripts\LoopBackground.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />

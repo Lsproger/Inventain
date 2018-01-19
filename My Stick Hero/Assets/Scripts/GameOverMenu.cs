@@ -17,7 +17,6 @@ public class GameOverMenu : MonoBehaviour {
     internal const float CAMERA_LAYER = -10;
 
 
-    // Use this for initialization
     void Start () {
         transform.Find("RestartButton").GetComponent<Button>().onClick.
             AddListener(delegate () 
@@ -45,7 +44,7 @@ public class GameOverMenu : MonoBehaviour {
             NEW_CHARACTER_POSITION_Y, 0);
 
         GameStateManager.instance.State = GameStateManager.GameState.Game;
-        GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("isWalking", true);
+        Character.SetCharacterAnim(true);
 
         ScoreManager.ResetScore();
         

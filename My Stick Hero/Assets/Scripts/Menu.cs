@@ -8,7 +8,31 @@ public class Menu : MonoBehaviour
 
     internal bool isSoundOn = true;
     internal Image soundImage;
-    internal bool isNeedToHideUI = false;
+    internal bool isNeedToHideUI;
+
+    internal bool IsSoundOn
+    {
+        get
+        {
+            return isSoundOn;
+        }
+        set
+        {
+            isSoundOn = value;
+        }
+    }
+
+    internal bool IsNeedToHideUI
+    {
+        get
+        {
+            return isNeedToHideUI;
+        }
+        set
+        {
+            isNeedToHideUI = value;
+        }
+    } 
 
 
     [SerializeField]
@@ -21,10 +45,14 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        IsSoundOn = true;
+        IsNeedToHideUI = false;
+
         transform.Find("Play").GetComponent<Button>().onClick.
             AddListener(delegate () { PlayButton_OnCLick(); });
         transform.Find("Sound").GetComponent<Button>().onClick.
             AddListener(delegate () { SoundButton_OnClick(); });
+
         soundImage = transform.Find("Sound").GetComponent<Image>();
         soundImage.sprite = sndOnImg;
     }
@@ -32,24 +60,24 @@ public class Menu : MonoBehaviour
 
     private void PlayButton_OnCLick()
     {
-        InputAggregator.OnPlayCliсkEventHandler();
+        EventAggregator.OnPlayCliсkEventHandler();
         GameStateManager.instance.State = GameStateManager.GameState.Game;
     }
 
 
     private void SoundButton_OnClick()
     {
-        if (isSoundOn)
+        if (IsSoundOn)
         {
             AudioListener.volume = 0;
             soundImage.sprite = sndOffImg;
-            isSoundOn = !isSoundOn;
+            IsSoundOn = !IsSoundOn;
         }
         else
         {
             AudioListener.volume = 1;
             soundImage.sprite = sndOnImg;
-            isSoundOn = !isSoundOn;
+            IsSoundOn = !IsSoundOn;
         }
     }
 }

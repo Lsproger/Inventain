@@ -6,6 +6,6 @@ public class LeftPlatformEdge : MonoBehaviour {
 
     void OnBecameInvisible()
     {
-        CameraController.isNeedToMove = false;
+        CameraController.IsNeedToMove = false;
     }
 }

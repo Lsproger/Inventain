@@ -47,10 +47,8 @@ public class GameStateManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Instance: " + instance);
         if (instance == null)
         {
-            Debug.Log("Instance set");
             instance = this;
         }
         else
@@ -59,7 +57,6 @@ public class GameStateManager : MonoBehaviour
         }
 
         instance.GameStateChanged += new GameStateChangedHandler(EnableUIItem);
-        Debug.Log("Handler Added");
         State = GameState.Menu;
     }
 

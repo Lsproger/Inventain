@@ -16,15 +16,15 @@ public class Game : MonoBehaviour
 
     void OnEnable()
     {
-        InputAggregator.OnCreateStickEvent += this.CreateStick;
-        InputAggregator.OnStopCreateStickEvent += this.StopCreateStick;
+        EventAggregator.OnCreateStickEvent += this.CreateStick;
+        EventAggregator.OnStopCreateStickEvent += this.StopCreateStick;
     }
 
 
     void OnDisable()
     {
-        InputAggregator.OnCreateStickEvent -= this.CreateStick;
-        InputAggregator.OnStopCreateStickEvent -= this.StopCreateStick;
+        EventAggregator.OnCreateStickEvent -= this.CreateStick;
+        EventAggregator.OnStopCreateStickEvent -= this.StopCreateStick;
     }
 
 
@@ -32,13 +32,12 @@ public class Game : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && GameStateManager.instance.State == GameStateManager.GameState.Game)
         {
-            InputAggregator.Game_OnCreateStickEvent();
+            EventAggregator.OnCreateStickEventHandler();
         }
 
         if (Input.GetKeyUp(KeyCode.Mouse0) && GameStateManager.instance.State == GameStateManager.GameState.Game)
         {
-            InputAggregator.Game_OnStopCreateStickEvent();
-            Debug.Log("STOP CREATING STICK");
+            EventAggregator.OnStopCreateStickEventHandler();
         }
 
         if (isNeedToCreateStick)
@@ -67,7 +66,7 @@ public class Game : MonoBehaviour
             else
             {
                 isNeedToRotateStick = false;
-                InputAggregator.Game_OnStopRotateStickEvent();
+                EventAggregator.OnStopRotateStickEventHandler();
             }
         }
     }

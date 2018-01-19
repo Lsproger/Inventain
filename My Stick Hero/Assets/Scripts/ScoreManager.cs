@@ -7,6 +7,7 @@ public class ScoreManager : MonoBehaviour {
 
     internal static int score = -1;
     internal static int bestScore = 0;
+    internal string best = "bestScore";
     Text scoreTextView;
     internal string textTemplate;
 
@@ -14,17 +15,17 @@ public class ScoreManager : MonoBehaviour {
     {
         scoreTextView = transform.GetComponent<Text>();
         textTemplate = scoreTextView.text;
-        bestScore = PlayerPrefs.GetInt("bestScore");
+        bestScore = PlayerPrefs.GetInt(best);
     }
 
     void OnEnable()
     {
-        InputAggregator.OnIncreaseScoreEvent += IncreaseScore;
+        EventAggregator.OnIncreaseScoreEvent += IncreaseScore;
     }
 
     void OnDisable()
     {
-        InputAggregator.OnIncreaseScoreEvent -= IncreaseScore;
+        EventAggregator.OnIncreaseScoreEvent -= IncreaseScore;
     }
 
 
@@ -32,13 +33,11 @@ public class ScoreManager : MonoBehaviour {
     {
         score += 1;
         scoreTextView.text = string.Format(textTemplate, score.ToString());
-        if (score > PlayerPrefs.GetInt("bestScore"))
+        if (score > PlayerPrefs.GetInt(best))
         {
-            PlayerPrefs.SetInt("bestScore", score);
-            bestScore = PlayerPrefs.GetInt("bestScore");
+            PlayerPrefs.SetInt(best, score);
+            bestScore = PlayerPrefs.GetInt(best);
         }
-
-        Debug.Log("Score:" + score + "\nBest:" + bestScore);
     }
 
     internal static void ResetScore()
