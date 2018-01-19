@@ -47,7 +47,7 @@ public class GameOverMenu : MonoBehaviour {
         GameStateManager.instance.State = GameStateManager.GameState.Game;
         GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().SetBool("isWalking", true);
 
-        Score.ResetScore();
+        ScoreManager.ResetScore();
         
     }
 }

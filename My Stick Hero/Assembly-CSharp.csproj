@@ -60,10 +60,11 @@
      <Compile Include="Assets\Scripts\GameStateManager.cs" />
      <Compile Include="Assets\Scripts\InputAggregator.cs" />
      <Compile Include="Assets\Scripts\LeftPlatformEdge.cs" />
+     <Compile Include="Assets\Scripts\LoopBackground.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
      <Compile Include="Assets\Scripts\RedSquare.cs" />
      <Compile Include="Assets\Scripts\RightPlatformEdge.cs" />
-     <Compile Include="Assets\Scripts\Score.cs" />
+     <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\ScoreTable.cs" />
      <Compile Include="Assets\Scripts\Stick.cs" />
      <Compile Include="Assets\Scripts\StickHead.cs" />

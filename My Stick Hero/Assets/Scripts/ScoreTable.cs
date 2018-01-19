@@ -13,6 +13,7 @@ public class ScoreTable : MonoBehaviour {
 
     void OnEnable()
     {
-        score.text = Score.score.ToString();
+        score.text = ScoreManager.score.ToString();
+        best.text = ScoreManager.bestScore.ToString();
     }
 }

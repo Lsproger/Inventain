@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class DieArea : MonoBehaviour {
 
+    internal float bestScore;
+
+
+    void Start()
+    {
+
+    }
+
     void OnTriggerEnter2D(Collider2D obj)
     {
         if(obj.tag == "Player")
@@ -19,5 +27,10 @@ public class DieArea : MonoBehaviour {
         transform.position = new Vector3(
             GameObject.FindGameObjectWithTag("Player").transform.position.x,
             transform.position.y, transform.position.z);
+    }
+
+    internal void SaveScoreIfBest()
+    {
+
     }
 }
