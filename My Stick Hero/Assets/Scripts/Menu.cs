@@ -58,7 +58,7 @@ public class Menu : MonoBehaviour
 
     private void PlayButton_OnCLick()
     {
-        EventAggregator.OnPlayCliсkEventHandler();
+        EventAggregator.Game_OnPlayCliсk();
         GameStateManager.instance.State = GameStateManager.GameState.Game;
     }
 

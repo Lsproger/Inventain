@@ -7,7 +7,7 @@ public class StickHead : MonoBehaviour
     {
         if (obj.tag == "Bonus")
         {
-            EventAggregator.OnIncreaseScoreEventHandler();
+            EventAggregator.Score_OnIncrease();
         }
         else if (obj.tag == "Platform")
         {

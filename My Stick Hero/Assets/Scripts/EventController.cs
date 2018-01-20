@@ -5,52 +5,52 @@ public class EventAggregator : MonoBehaviour {
     public delegate void EventContainer();
 
     internal static event EventContainer OnPlayClickEvent;
-    internal static event EventContainer OnCreateStickEvent;
-    internal static event EventContainer OnStopCreateStickEvent;
-    internal static event EventContainer OnStopRotateStickEvent;
+    internal static event EventContainer OnCreateEvent;
+    internal static event EventContainer OnStopCreateEvent;
+    internal static event EventContainer OnStopRotateEvent;
     internal static event EventContainer OnPlatformEdgeReachedEvent;
     internal static event EventContainer OnGameOverEvent;
     internal static event EventContainer OnIncreaseScoreEvent;
-    internal static event EventContainer OnStickGotOnPlatformEvent;
+    internal static event EventContainer OnGotPlatformEvent;
 
 
-    internal static void OnStickGotOnPlatformEventHandler()
+    internal static void Stick_OnGotPlatform()
     {
-        CallIfNotNull(OnStickGotOnPlatformEvent);
+        CallIfNotNull(OnGotPlatformEvent);
     }
 
 
-    internal static void OnPlayCliсkEventHandler()
+    internal static void Game_OnPlayCliсk()
     {
         CallIfNotNull(OnPlayClickEvent);
     }
 
-    internal static void OnCreateStickEventHandler()
+    internal static void Stick_OnCreate()
     {
-        CallIfNotNull(OnCreateStickEvent);
+        CallIfNotNull(OnCreateEvent);
     }
 
-    internal static void OnStopCreateStickEventHandler()
+    internal static void Stick_OnStopCreate()
     {
-        CallIfNotNull(OnStopCreateStickEvent);
+        CallIfNotNull(OnStopCreateEvent);
     }
 
-    internal static void OnStopRotateStickEventHandler()
+    internal static void Stick_OnStopRotate()
     {
-        CallIfNotNull(OnStopRotateStickEvent);
+        CallIfNotNull(OnStopRotateEvent);
     }
 
-    internal static void OnPlatformEdgeReachedEventHandler()
+    internal static void Character_OnPlatformEdgeReached()
     {
         CallIfNotNull(OnPlatformEdgeReachedEvent);
     }
 
-    internal static void OnGameOverEventHandler()
+    internal static void Game_OnGameOver()
     {
         CallIfNotNull(OnGameOverEvent);
     }
 
-    internal static void OnIncreaseScoreEventHandler()
+    internal static void Score_OnIncrease()
     {
         CallIfNotNull(OnIncreaseScoreEvent);
     }

@@ -25,8 +25,8 @@ public class RightPlatformEdge : MonoBehaviour
         {
             if (GameStateManager.instance.State == GameStateManager.GameState.Game)
             {
-                EventAggregator.OnPlatformEdgeReachedEventHandler();
-                EventAggregator.OnIncreaseScoreEventHandler();
+                EventAggregator.Character_OnPlatformEdgeReached();
+                EventAggregator.Score_OnIncrease();
             }
 
             CreateNextPlatform();

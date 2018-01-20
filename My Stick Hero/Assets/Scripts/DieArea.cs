@@ -8,7 +8,7 @@ public class DieArea : MonoBehaviour
         if(obj.tag == "Player")
         {
             GameStateManager.instance.State = GameStateManager.GameState.GameOverMenu;
-            EventAggregator.OnGameOverEventHandler();
+            EventAggregator.Game_OnGameOver();
         }
     }
 

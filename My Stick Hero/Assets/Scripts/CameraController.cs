@@ -2,7 +2,6 @@
 
 public class CameraController : MonoBehaviour
 {
-
     internal static bool isNeedToMove;
 
     internal static bool IsNeedToMove
@@ -31,11 +30,13 @@ public class CameraController : MonoBehaviour
         EventAggregator.OnPlayClickEvent += this.MoveNextPosition;
     }
 
+
     void OnDisable()
     {
         EventAggregator.OnPlatformEdgeReachedEvent -= this.MoveNextPosition;
         EventAggregator.OnPlayClickEvent -= this.MoveNextPosition;
     }
+
 
     void Update()
     {

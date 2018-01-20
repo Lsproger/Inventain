@@ -29,7 +29,7 @@ public class Character : MonoBehaviour
     void OnEnable()
     {
         EventAggregator.OnPlayClickEvent += this.StartMove;
-        EventAggregator.OnStopRotateStickEvent += this.StartMove;
+        EventAggregator.OnStopRotateEvent += this.StartMove;
 
         EventAggregator.OnGameOverEvent += this.StopMove;
         EventAggregator.OnPlatformEdgeReachedEvent += this.StopMove;
@@ -39,7 +39,7 @@ public class Character : MonoBehaviour
     void OnDisable()
     {
         EventAggregator.OnPlayClickEvent -= this.StartMove;
-        EventAggregator.OnStopRotateStickEvent -= this.StartMove;
+        EventAggregator.OnStopRotateEvent -= this.StartMove;
 
         EventAggregator.OnGameOverEvent -= this.StopMove;
         EventAggregator.OnPlatformEdgeReachedEvent -= this.StopMove;
