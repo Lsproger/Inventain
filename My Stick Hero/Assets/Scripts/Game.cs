@@ -120,6 +120,7 @@ public class Game : MonoBehaviour
             stickHead = stick.transform.Find("StickHead").gameObject;
             stick.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
             stickHead.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            stick.GetComponent<AudioSource>().Play();
     }
 
 
@@ -127,6 +128,7 @@ public class Game : MonoBehaviour
     {
         IsNeedToCreateStick = false;
         IsNeedToRotateStick = true;
+        stick.GetComponent<AudioSource>().Stop();
     }
 
 
