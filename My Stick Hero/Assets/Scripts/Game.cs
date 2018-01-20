@@ -1,15 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Game : MonoBehaviour
 {
 
     internal GameObject stick;
     internal GameObject stickHead;
-    internal bool isNeedToCreateStick = false;
-    internal bool isNeedToRotateStick = false;
+    internal bool isNeedToCreateStick;
+    internal bool isNeedToRotateStick;
     internal float rotationSpeed = 3;
+    internal static int stickCounter = 1;
+
+    internal bool IsNeedToCreateStick
+    {
+        get
+        {
+            return isNeedToCreateStick;
+        }
+        set
+        {
+            isNeedToCreateStick = value;
+        }
+    }
+
+    internal bool IsNeedToRotateStick
+    {
+        get
+        {
+            return isNeedToRotateStick;
+        }
+        set
+        {
+            isNeedToRotateStick = value;
+        }
+    }
 
     internal const float DEAFAULT_STICK_HEAD_SCALE = 0.2f;
 
@@ -28,19 +51,18 @@ public class Game : MonoBehaviour
     }
 
 
+    void Start()
+    {
+        IsNeedToCreateStick = false;
+        IsNeedToRotateStick = false;
+    }
+
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && GameStateManager.instance.State == GameStateManager.GameState.Game)
-        {
-            EventAggregator.OnCreateStickEventHandler();
-        }
+        InputCheck();
 
-        if (Input.GetKeyUp(KeyCode.Mouse0) && GameStateManager.instance.State == GameStateManager.GameState.Game)
-        {
-            EventAggregator.OnStopCreateStickEventHandler();
-        }
-
-        if (isNeedToCreateStick)
+        if (IsNeedToCreateStick)
         {
             stick.transform.localScale = new Vector3
                 (
@@ -48,6 +70,7 @@ public class Game : MonoBehaviour
                 stick.transform.localScale.y + 1f,
                 stick.transform.localScale.z
                 );
+
             stickHead.transform.localScale = new Vector3
                 (
                 stickHead.transform.localScale.x,
@@ -56,36 +79,54 @@ public class Game : MonoBehaviour
                 );
         }
 
-        if (isNeedToRotateStick)
+        if (IsNeedToRotateStick)
         {
-            if (stick.transform.rotation.eulerAngles.z - 360 > -90 ||
-                stick.transform.rotation.eulerAngles.z == 0)
+            if (stick.GetComponent<Rigidbody2D>().rotation > -90)
             {
                 stick.transform.Rotate(new Vector3(0, 0, -rotationSpeed));
             }
             else
             {
-                isNeedToRotateStick = false;
+                IsNeedToRotateStick = false;
                 EventAggregator.OnStopRotateStickEventHandler();
             }
         }
     }
 
 
+    internal void InputCheck()
+    {
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (stickCounter > 0)
+            {
+                EventAggregator.OnCreateStickEventHandler();
+                --stickCounter;
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            EventAggregator.OnStopCreateStickEventHandler();
+        }
+    }
+
+
     public void CreateStick()
     {
-        isNeedToCreateStick = true;
-        stick = GameObject.FindGameObjectWithTag("Platform").transform.Find("Stick").gameObject;
-        stickHead = stick.transform.Find("StickHead").gameObject;
-        stick.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
-        stickHead.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            IsNeedToCreateStick = true;
+            stick = GameObject.FindGameObjectWithTag("Platform").
+                transform.Find("Stick").gameObject;
+            stickHead = stick.transform.Find("StickHead").gameObject;
+            stick.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
+            stickHead.GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 1);
     }
 
 
     public void StopCreateStick()
     {
-        isNeedToCreateStick = false;
-        isNeedToRotateStick = true;
+        IsNeedToCreateStick = false;
+        IsNeedToRotateStick = true;
     }
 
 

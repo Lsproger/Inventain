@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class GameOverMenu : MonoBehaviour {
+public class GameOverMenu : MonoBehaviour
+{
 
     [SerializeField]
     private Transform platform;
@@ -25,28 +24,40 @@ public class GameOverMenu : MonoBehaviour {
             });
     }
 
+
     private void RestartButton_OnCLick()
     {
-        foreach (var pl in GameObject.FindGameObjectsWithTag("Platform"))
-        {
-            Destroy(pl);
-        }
+        ScoreManager.ResetScore();
+        DestroyPlatforms();
+        SetInitialSceneState();
+    }
+
+
+    internal void SetInitialSceneState()
+    {
         Camera.main.transform.position = new Vector3(0, 0, CAMERA_LAYER);
-        Transform newPlatform = Instantiate(platform, 
-            new Vector3(NEW_PLATFORM_POSITION_X, NEW_PLATFORM_POSITION_Y, 0), 
+        LoopBackground.SetInitialPosition();
+        Transform newPlatform = Instantiate(platform,
+            new Vector3(NEW_PLATFORM_POSITION_X, NEW_PLATFORM_POSITION_Y, 0),
             Quaternion.Euler(0, 0, 0));
 
         newPlatform.transform.Find("RedSquare").GetComponent<SpriteRenderer>().enabled = false;
         newPlatform.transform.Find("RightPlatformEdge").GetComponent<BoxCollider2D>().enabled = true;
-        
+
         GameObject.FindGameObjectWithTag("Player").transform.position = new Vector3(
             NEW_CHARACTER_POSITION_X,
             NEW_CHARACTER_POSITION_Y, 0);
 
         GameStateManager.instance.State = GameStateManager.GameState.Game;
         Character.SetCharacterAnim(true);
+    }
 
-        ScoreManager.ResetScore();
-        
+
+    internal void DestroyPlatforms()
+    {
+        foreach (var pl in GameObject.FindGameObjectsWithTag("Platform"))
+        {
+            Destroy(pl);
+        }
     }
 }

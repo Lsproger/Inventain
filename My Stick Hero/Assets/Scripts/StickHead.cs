@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class StickHead : MonoBehaviour {
+public class StickHead : MonoBehaviour
+{
 
     void OnTriggerEnter2D(Collider2D obj)
     {

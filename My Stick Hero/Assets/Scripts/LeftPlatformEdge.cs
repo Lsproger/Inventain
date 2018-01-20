@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class LeftPlatformEdge : MonoBehaviour {
+public class LeftPlatformEdge : MonoBehaviour
+{
 
     void OnBecameInvisible()
     {

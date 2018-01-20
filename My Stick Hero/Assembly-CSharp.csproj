@@ -57,15 +57,14 @@
      <Compile Include="Assets\Scripts\EventController.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\GameOverMenu.cs" />
+     <Compile Include="Assets\Scripts\GameStateChangedArgs.cs" />
      <Compile Include="Assets\Scripts\GameStateManager.cs" />
      <Compile Include="Assets\Scripts\LeftPlatformEdge.cs" />
      <Compile Include="Assets\Scripts\LoopBackground.cs" />
      <Compile Include="Assets\Scripts\Menu.cs" />
-     <Compile Include="Assets\Scripts\RedSquare.cs" />
      <Compile Include="Assets\Scripts\RightPlatformEdge.cs" />
      <Compile Include="Assets\Scripts\ScoreManager.cs" />
      <Compile Include="Assets\Scripts\ScoreTable.cs" />
-     <Compile Include="Assets\Scripts\Stick.cs" />
      <Compile Include="Assets\Scripts\StickHead.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

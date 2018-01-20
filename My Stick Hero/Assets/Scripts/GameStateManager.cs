@@ -1,35 +1,16 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts;
+using System;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    internal delegate void GameStateChangedHandler(object sender, GameStateChangedArgs GameStateChangedArgs);
+    internal delegate void GameStateChangedHandler
+        (object sender, GameStateChangedArgs GameStateChangedArgs);
     internal GameStateChangedHandler GameStateChanged;
-
-
-    internal class GameStateChangedArgs : EventArgs
-    {
-        private GameState _state = 0;
-
-        public GameState State
-        {
-            get { return _state; }
-        }
-
-        public GameStateChangedArgs(GameState state)
-        {
-            _state = state;
-        }
-
-    }
-
-
     internal static GameStateManager instance = null;
     internal enum GameState { Menu, Game, GameOverMenu }
     private static GameState state;
-    internal GameState State
+    internal  GameState State
     {
         get
         {
@@ -45,6 +26,7 @@ public class GameStateManager : MonoBehaviour
         }
     }
 
+
     void Start()
     {
         if (instance == null)
@@ -59,8 +41,6 @@ public class GameStateManager : MonoBehaviour
         instance.GameStateChanged += new GameStateChangedHandler(EnableUIItem);
         State = GameState.Menu;
     }
-
-
 
 
     internal void EnableUIItem(object sender, GameStateChangedArgs gameStateChangedArgs)

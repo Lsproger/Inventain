@@ -1,14 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour {
+public class ScoreManager : MonoBehaviour
+{
 
     internal static int score = -1;
     internal static int bestScore = 0;
     internal string best = "bestScore";
-    Text scoreTextView;
+    internal Text scoreTextView;
     internal string textTemplate;
 
     void Start()
