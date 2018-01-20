@@ -3,10 +3,7 @@ using UnityEngine.UI;
 
 public class GameOverMenu : MonoBehaviour
 {
-
-    [SerializeField]
-    private Transform platform;
-
+    #region Fields
     internal const float NEW_PLATFORM_POSITION_X = 2.65f;
     internal const float NEW_PLATFORM_POSITION_Y = -10.5f;
 
@@ -16,6 +13,12 @@ public class GameOverMenu : MonoBehaviour
     internal const float CAMERA_LAYER = -10;
 
 
+    [SerializeField]
+    private Transform platform;
+    #endregion
+
+
+    #region Unity lifecycle
     void Start () {
         transform.Find("RestartButton").GetComponent<Button>().onClick.
             AddListener(delegate () 
@@ -23,17 +26,20 @@ public class GameOverMenu : MonoBehaviour
                 RestartButton_OnCLick();
             });
     }
+    #endregion
 
 
-    private void RestartButton_OnCLick()
+    #region Private methods
+    private void DestroyPlatforms()
     {
-        ScoreManager.ResetScore();
-        DestroyPlatforms();
-        SetInitialSceneState();
+        foreach (var pl in GameObject.FindGameObjectsWithTag("Platform"))
+        {
+            Destroy(pl);
+        }
     }
 
 
-    internal void SetInitialSceneState()
+    private void SetInitialSceneState()
     {
         Camera.main.transform.position = new Vector3(0, 0, CAMERA_LAYER);
         LoopBackground.SetInitialPosition();
@@ -48,16 +54,18 @@ public class GameOverMenu : MonoBehaviour
             NEW_CHARACTER_POSITION_X,
             NEW_CHARACTER_POSITION_Y, 0);
 
-        GameStateManager.instance.State = GameStateManager.GameState.Game;
+        GameStateManager.Instance.State = GameStateManager.GameState.Game;
         Character.SetCharacterAnim(true);
     }
+    #endregion
 
 
-    internal void DestroyPlatforms()
+    #region Event handlers
+    private void RestartButton_OnCLick()
     {
-        foreach (var pl in GameObject.FindGameObjectsWithTag("Platform"))
-        {
-            Destroy(pl);
-        }
+        ScoreManager.ResetScore();
+        DestroyPlatforms();
+        SetInitialSceneState();
     }
+    #endregion
 }

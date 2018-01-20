@@ -4,12 +4,28 @@ using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
 {
-    internal delegate void GameStateChangedHandler
-        (object sender, GameStateChangedArgs GameStateChangedArgs);
-    internal GameStateChangedHandler GameStateChanged;
-    internal static GameStateManager instance = null;
-    internal enum GameState { Menu, Game, GameOverMenu }
+    #region Fields
+    private static GameStateManager instance;
     private static GameState state;
+
+
+    private delegate void GameStateChangedHandler
+        (object sender, GameStateChangedArgs GameStateChangedArgs);
+    private GameStateChangedHandler OnGameStateChangedEvent;
+
+
+    internal enum GameState { Menu, Game, GameOverMenu }
+    #endregion
+
+
+    #region Properties
+    internal static GameStateManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
     internal  GameState State
     {
         get
@@ -19,31 +35,44 @@ public class GameStateManager : MonoBehaviour
         set
         {
             state = value;
-            if (GameStateChanged != null)
+            if (OnGameStateChangedEvent != null)
             {
-                GameStateChanged(this, new GameStateChangedArgs(state));
+                OnGameStateChangedEvent(this, new GameStateChangedArgs(state));
             }
         }
     }
+    #endregion
 
+
+    #region Unity lificycle
+    void OnEnable()
+    {
+        OnGameStateChangedEvent += EnableUIItem;
+    }
+
+    void OnDisable()
+    {
+        OnGameStateChangedEvent -= EnableUIItem;
+    }
 
     void Start()
     {
-        if (instance == null)
+        if (Instance == null)
         {
             instance = this;
         }
         else
         {
-            throw new Exception("Instance of GameStateChange already exist");
+            throw new Exception("Instance of GameStateManager is already exist");
         }
 
-        instance.GameStateChanged += new GameStateChangedHandler(EnableUIItem);
         State = GameState.Menu;
     }
+    #endregion
 
 
-    internal void EnableUIItem(object sender, GameStateChangedArgs gameStateChangedArgs)
+    #region Private methods
+    private void EnableUIItem(object sender, GameStateChangedArgs gameStateChangedArgs)
     {
         foreach (Transform child in transform)
         {
@@ -57,5 +86,5 @@ public class GameStateManager : MonoBehaviour
             }
         }
     }
-
+    #endregion
 }

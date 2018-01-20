@@ -3,11 +3,22 @@ using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
-
+    #region Fields
     internal bool isSoundOn;
-    internal Image soundImage;
     internal bool isNeedToHideUI;
+    internal Image soundImage;
 
+
+    [SerializeField]
+    private Sprite sndOnImg;
+    [SerializeField]
+    private Sprite sndOffImg;
+    [SerializeField]
+    private Canvas canvas;
+    #endregion
+
+
+    #region Properties
     internal bool IsSoundOn
     {
         get
@@ -30,17 +41,11 @@ public class Menu : MonoBehaviour
         {
             isNeedToHideUI = value;
         }
-    } 
+    }
+    #endregion
 
 
-    [SerializeField]
-    private Sprite sndOnImg;
-    [SerializeField]
-    private Sprite sndOffImg;
-    [SerializeField]
-    private Canvas canvas;
-
-
+    #region Unity lifecycle
     void Start()
     {
         IsSoundOn = true;
@@ -54,12 +59,14 @@ public class Menu : MonoBehaviour
         soundImage = transform.Find("Sound").GetComponent<Image>();
         soundImage.sprite = sndOnImg;
     }
+    #endregion
 
 
+    #region Event handlers
     private void PlayButton_OnCLick()
     {
         EventAggregator.Game_OnPlayCliсk();
-        GameStateManager.instance.State = GameStateManager.GameState.Game;
+        GameStateManager.Instance.State = GameStateManager.GameState.Game;
     }
 
 
@@ -78,4 +85,5 @@ public class Menu : MonoBehaviour
             IsSoundOn = !IsSoundOn;
         }
     }
+    #endregion
 }

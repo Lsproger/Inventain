@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 
-public class EventAggregator : MonoBehaviour {
-
+public class EventAggregator : MonoBehaviour
+{
+    #region Fields
     public delegate void EventContainer();
+
 
     internal static event EventContainer OnPlayClickEvent;
     internal static event EventContainer OnCreateEvent;
@@ -12,13 +14,25 @@ public class EventAggregator : MonoBehaviour {
     internal static event EventContainer OnGameOverEvent;
     internal static event EventContainer OnIncreaseScoreEvent;
     internal static event EventContainer OnGotPlatformEvent;
+    #endregion
 
 
+    #region Private methods 
+    private static void CallIfNotNull(EventAggregator.EventContainer eventName)
+    {
+        if (eventName != null)
+        {
+            eventName();
+        }
+    }
+    #endregion
+
+
+    #region Event handlers
     internal static void Stick_OnGotPlatform()
     {
         CallIfNotNull(OnGotPlatformEvent);
     }
-
 
     internal static void Game_OnPlayCliсk()
     {
@@ -54,12 +68,5 @@ public class EventAggregator : MonoBehaviour {
     {
         CallIfNotNull(OnIncreaseScoreEvent);
     }
-
-    private static void CallIfNotNull(EventAggregator.EventContainer eventName)
-    {
-        if (eventName != null)
-        {
-            eventName();
-        }
-    }
+    #endregion
 }

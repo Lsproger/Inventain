@@ -2,6 +2,7 @@
 
 public class RightPlatformEdge : MonoBehaviour
 {
+    #region Fields
     internal const float DEFAULT_SCALE = 1;
     internal const float PLATFORM_WIDTH = 5;
     internal const float MIN_PLATFORM_SCALE = 0.2f;
@@ -10,8 +11,10 @@ public class RightPlatformEdge : MonoBehaviour
 
     [SerializeField]
     private Transform platform;
+    #endregion
 
 
+    #region Unity lifecycle
     void OnBecameInvisible()
     {
         Destroy(transform.parent.gameObject);
@@ -23,7 +26,7 @@ public class RightPlatformEdge : MonoBehaviour
     {
         if (obj.tag == "Player")
         {
-            if (GameStateManager.instance.State == GameStateManager.GameState.Game)
+            if (GameStateManager.Instance.State == GameStateManager.GameState.Game)
             {
                 EventAggregator.Character_OnPlatformEdgeReached();
                 EventAggregator.Score_OnIncrease();
@@ -32,9 +35,11 @@ public class RightPlatformEdge : MonoBehaviour
             CreateNextPlatform();
         }
     }
+    #endregion
 
 
-    internal void CreateNextPlatform()
+    #region Private methods
+    private void CreateNextPlatform()
     {
         Transform nextPlatform = Instantiate(platform);
         SetPlatformComponents(nextPlatform);
@@ -48,7 +53,7 @@ public class RightPlatformEdge : MonoBehaviour
     }
 
 
-    internal void SetPlatformComponents(Transform platform)
+    private void SetPlatformComponents(Transform platform)
     {
         platform.transform.Find("RedSquare").
             GetComponent<SpriteRenderer>().enabled = true;
@@ -57,7 +62,7 @@ public class RightPlatformEdge : MonoBehaviour
     }
 
 
-    internal void SetPlatformPositionAndTransform(Transform platform, float scale, float coordX)
+    private void SetPlatformPositionAndTransform(Transform platform, float scale, float coordX)
     {
         platform.transform.localScale = new Vector3
             (
@@ -79,4 +84,5 @@ public class RightPlatformEdge : MonoBehaviour
         platform.Find("RedSquare").localScale = 
             new Vector3(DEFAULT_SCALE / scale, DEFAULT_SCALE, 1f);
     }
+    #endregion
 }

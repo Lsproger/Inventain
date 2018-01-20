@@ -2,14 +2,22 @@
 
 public class Game : MonoBehaviour
 {
+    #region Fields
+    internal const float DEAFAULT_STICK_HEAD_SCALE = 0.2f;
+
+
+    internal static int stickCounter = 1;
+
 
     internal GameObject stick;
     internal GameObject stickHead;
     internal bool isNeedToCreateStick;
     internal bool isNeedToRotateStick;
     internal float rotationSpeed = 3;
-    internal static int stickCounter = 1;
+    #endregion
 
+
+    #region Properties
     internal bool IsNeedToCreateStick
     {
         get
@@ -22,6 +30,7 @@ public class Game : MonoBehaviour
         }
     }
 
+
     internal bool IsNeedToRotateStick
     {
         get
@@ -33,10 +42,10 @@ public class Game : MonoBehaviour
             isNeedToRotateStick = value;
         }
     }
+    #endregion
 
-    internal const float DEAFAULT_STICK_HEAD_SCALE = 0.2f;
 
-
+    #region Unity lifecycle
     void OnEnable()
     {
         EventAggregator.OnCreateEvent += this.CreateStick;
@@ -92,8 +101,10 @@ public class Game : MonoBehaviour
             }
         }
     }
+    #endregion
 
 
+    #region Public methods
     internal void InputCheck()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -112,7 +123,7 @@ public class Game : MonoBehaviour
     }
 
 
-    public void CreateStick()
+    internal void CreateStick()
     {
             IsNeedToCreateStick = true;
             stick = GameObject.FindGameObjectWithTag("Platform").
@@ -124,12 +135,11 @@ public class Game : MonoBehaviour
     }
 
 
-    public void StopCreateStick()
+    internal void StopCreateStick()
     {
         IsNeedToCreateStick = false;
         IsNeedToRotateStick = true;
         stick.GetComponent<AudioSource>().Stop();
     }
-
-
+    #endregion
 }

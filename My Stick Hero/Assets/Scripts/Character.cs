@@ -2,30 +2,17 @@
 
 public class Character : MonoBehaviour
 {
+    #region Fields
+    internal static Animator characterAnim;
+    internal static int paramNumber;
+
 
     internal AudioSource stepsSource;
-    internal static Animator charAnim;
-    internal static int paramNumber;
     internal string paramName = "isWalking";
+    #endregion
 
 
-    void Awake()
-    {
-        stepsSource = GetComponent<AudioSource>();
-        charAnim = GetComponent<Animator>();
-
-        foreach (var par in charAnim.parameters)
-        {
-            if (par.name == paramName)
-            {
-                paramNumber = par.nameHash;
-                break;
-            }
-        }
-        
-    }
-
-
+    #region Unity lifecycle
     void OnEnable()
     {
         EventAggregator.OnPlayClickEvent += this.StartMove;
@@ -46,12 +33,37 @@ public class Character : MonoBehaviour
     }
 
 
+    void Awake()
+    {
+        stepsSource = GetComponent<AudioSource>();
+        characterAnim = GetComponent<Animator>();
+
+        foreach (var par in characterAnim.parameters)
+        {
+            if (par.name == paramName)
+            {
+                paramNumber = par.nameHash;
+                break;
+            }
+        }
+        
+    }
+
+
     void Update () {
-        if (charAnim.GetBool(paramNumber))
+        if (characterAnim.GetBool(paramNumber))
         {
             Walking();
         }
         transform.rotation = Quaternion.Euler(0, 0, 0);
+    }
+    #endregion
+
+
+    #region Public methods
+    internal static void SetCharacterAnim(bool isWalking)
+    {
+        characterAnim.SetBool(paramNumber, isWalking);
     }
 
 
@@ -74,10 +86,5 @@ public class Character : MonoBehaviour
         SetCharacterAnim(false);
         stepsSource.Stop();
     }
-
-
-    internal static void SetCharacterAnim(bool isWalking)
-    {
-        charAnim.SetBool(paramNumber, isWalking);
-    }
+    #endregion
 }

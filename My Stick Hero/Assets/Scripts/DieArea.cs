@@ -2,12 +2,12 @@
 
 public class DieArea : MonoBehaviour
 {
-
+    #region Unity lificycle
     void OnTriggerEnter2D(Collider2D obj)
     {
         if(obj.tag == "Player")
         {
-            GameStateManager.instance.State = GameStateManager.GameState.GameOverMenu;
+            GameStateManager.Instance.State = GameStateManager.GameState.GameOverMenu;
             EventAggregator.Game_OnGameOver();
         }
     }
@@ -19,4 +19,5 @@ public class DieArea : MonoBehaviour
             GameObject.FindGameObjectWithTag("Player").transform.position.x,
             transform.position.y, transform.position.z);
     }
+    #endregion
 }

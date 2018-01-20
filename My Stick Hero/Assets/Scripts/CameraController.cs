@@ -2,8 +2,12 @@
 
 public class CameraController : MonoBehaviour
 {
+    #region Fields
     internal static bool isNeedToMove;
+    #endregion
 
+
+    #region Properties
     internal static bool IsNeedToMove
     {
         get
@@ -16,14 +20,10 @@ public class CameraController : MonoBehaviour
         }
 
     }
+    #endregion
 
 
-    void Awake()
-    {
-        IsNeedToMove = false;
-    }
-
-
+    #region Unity lifecycle
     void OnEnable()
     {
         EventAggregator.OnPlatformEdgeReachedEvent += this.MoveNextPosition;
@@ -38,6 +38,12 @@ public class CameraController : MonoBehaviour
     }
 
 
+    void Awake()
+    {
+        IsNeedToMove = false;
+    }
+
+
     void Update()
     {
         if (IsNeedToMove)
@@ -45,10 +51,13 @@ public class CameraController : MonoBehaviour
             Camera.main.transform.Translate(new Vector3(0.1f, 0, 0));
         }
     }
+    #endregion
 
 
+    #region Public Methods
     public void MoveNextPosition()
     {
         IsNeedToMove = true;
     }
+    #endregion
 }

@@ -3,13 +3,18 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-
+    #region Fields
     internal static int score = -1;
     internal static int bestScore = 0;
-    internal string best = "bestScore";
-    internal Text scoreTextView;
-    internal string textTemplate;
 
+
+    internal Text scoreTextView;
+    internal string best = "bestScore";
+    internal string textTemplate;
+    #endregion
+
+
+    #region Unity lifecycle
     void Start()
     {
         scoreTextView = transform.GetComponent<Text>();
@@ -26,9 +31,19 @@ public class ScoreManager : MonoBehaviour
     {
         EventAggregator.OnIncreaseScoreEvent -= IncreaseScore;
     }
+    #endregion
 
 
-    internal void IncreaseScore()
+    #region Public methods
+    internal static void ResetScore()
+    {
+        score = -1;
+    }
+    #endregion
+
+
+    #region Private methods
+    private void IncreaseScore()
     {
         score += 1;
         scoreTextView.text = string.Format(textTemplate, score.ToString());
@@ -38,10 +53,5 @@ public class ScoreManager : MonoBehaviour
             bestScore = PlayerPrefs.GetInt(best);
         }
     }
-
-    internal static void ResetScore()
-    {
-        score = -1;
-    }
-
+    #endregion
 }

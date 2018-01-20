@@ -2,7 +2,7 @@
 
 public class StickHead : MonoBehaviour
 {
-
+    #region Unity lifecycle
     void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.tag == "Bonus")
@@ -16,4 +16,5 @@ public class StickHead : MonoBehaviour
             obj.gameObject.GetComponent<AudioSource>().Play();
         }
     }
+    #endregion
 }

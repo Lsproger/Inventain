@@ -4,10 +4,15 @@ using System.Linq;
 
 public class LoopBackground : MonoBehaviour
 {
-
+    #region Fields
     internal const float BACKGROUND_WIDTH = 15;
-    internal static List<Transform> bgPics;
 
+
+    internal static List<Transform> bgPics;
+    #endregion
+
+
+    #region Unity lifecycle
     void Start()
     {
         bgPics = new List<Transform>();
@@ -30,9 +35,10 @@ public class LoopBackground : MonoBehaviour
             bgPics.Add(back);
         }
     }
+    #endregion
 
 
-
+    #region Public methods
     internal static void SetInitialPosition()
     {
         float _x = 0;
@@ -48,6 +54,7 @@ public class LoopBackground : MonoBehaviour
             _x = _x + BACKGROUND_WIDTH;
         }
     }
+    #endregion
 }
 
 
